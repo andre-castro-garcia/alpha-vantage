@@ -1,5 +1,10 @@
 import React from 'react';
 import { Search } from './components/search';
+import { Quote } from './components/quote';
 
-const App = (() => <Search />);
+const App = (() =>
+    <div>
+        <Search />
+        <Quote />
+    </div>);
 export default App;

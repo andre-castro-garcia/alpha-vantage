@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { rootSaga } from './sagas';
 import dotenv from 'dotenv';
 
-import 'antd/dist/antd.css';
-
 import { Provider } from 'react-redux';
 import { configureStore } from './store';
 import createSagaMiddleware from 'redux-saga';

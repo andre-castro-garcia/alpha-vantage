@@ -1,18 +1,17 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { searchSymbolInfo} from '../../store/reducers/searchReducer';
+import { searchSymbolInfo } from '../../store/reducers/searchReducer';
+import { searchQuoteInfo } from '../../store/reducers/searchQuoteReducer';
 import { withHandlers, withState, withProps, compose } from 'recompose';
-
-import { Input, Button, Layout, Table } from 'antd';
-const { Content } = Layout;
-const { Column } = Table;
+import _ from 'lodash';
 
 const enhance = compose(
     connect(
         ({ SearchReducer }) => ({ SearchReducer }),
         {
-            searchSymbolInfoConnect: searchSymbolInfo
+            searchSymbolInfoConnect: searchSymbolInfo,
+            searchQuoteInfoConnect: searchQuoteInfo
         }
     ),
     withProps(({ SearchReducer }) => ({
@@ -29,57 +28,45 @@ const enhance = compose(
     })
 );
 
-const isEmpty = (array) => array != null && array !== undefined && array.length === 0;
-const searchBoxStyle = {
-  display: "flex"
-};
-const resultBoxStyle = {
-    paddingTop: "20px"
-};
-
-export const Search = enhance(({ inputValue, data, isFetching, isSuccess, isError, onChange, searchSymbolInfoConnect }) =>
-    <Layout className="layout">
-    <Content style={{ padding: '0 50px', marginTop: 20, marginBottom: 20 }}>
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-        <div style={searchBoxStyle}>
-            <span>
-                Pesquise pelo nome do papel (PETR4):
-            </span>
-        <Input
-            onChange={onChange}
-            type='text'
-            value={inputValue}
-        />
-            <span>
-                &nbsp;
-            </span>
-        <Button shape="circle" icon="search" disabled={inputValue.length < 1} onClick={() => searchSymbolInfoConnect(inputValue)}/>
-        </div>
-        <div style={resultBoxStyle}>
+export const Search = enhance(({ inputValue, data, isFetching, isSuccess, isError, onChange, searchSymbolInfoConnect,
+                                   searchQuoteInfoConnect }) =>
+    <div>
+        <input onChange={onChange} type='text' value={inputValue}/>
+        <button disabled={inputValue.length < 1} onClick={() => searchSymbolInfoConnect(inputValue)}>
+            Search
+        </button>
         {
             isFetching &&
-            <div>Pesquisando...</div>
+            <div>Loading...</div>
         }
         {
             isError &&
-            <div>Ocorreu um erro ao realizar a consulta.</div>
+            <div>Ops! an error occured.</div>
         }
-        {
-            isEmpty(data.bestMatches) &&
-            <div>Nenhum item encontrado!</div>
-        }
-        {
-            isSuccess && !isEmpty(data.bestMatches) &&
-            <Table dataSource={data.bestMatches} pagination={false}>
-                <Column title="Símbolo" dataIndex="1. symbol" key="1. symbol"/>
-                <Column title="Empresa" dataIndex="2. name" key="2. name"/>
-                <Column title="Região" dataIndex="4. region" key="4. region"/>
-                <Column title="Fuso Horário" dataIndex="7. timezone" key="7. timezone"/>
-                <Column title="Moeda" dataIndex="8. currency" key="8. currency"/>
-            </Table>
-        }
-        </div>
-        </div>
-    </Content>
-    </Layout>
+        <table>
+            <tbody>
+            {
+                isSuccess && !isFetching && _.isEmpty(data.bestMatches) &&
+                    <tr><td>Symbol not found</td></tr>
+            }
+            {
+                isSuccess && !isFetching &&
+                    data.bestMatches.map((symbol, key) => {
+                        return (
+                            <tr key={key}>
+                                <td>
+                                    <button onClick={() => searchQuoteInfoConnect(symbol["1. symbol"])}>
+                                        {symbol["1. symbol"]}
+                                    </button>
+                                </td>
+                                <td>{symbol["2. name"]}</td>
+                                <td>{symbol["4. region"]}</td>
+                                <td>{symbol["7. timezone"]}</td>
+                                <td>{symbol["8. currency"]}</td>
+                            </tr>
+                        )})
+            }
+            </tbody>
+        </table>
+    </div>
 );

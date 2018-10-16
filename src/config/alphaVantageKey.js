@@ -1,0 +1,1 @@
+export const alphaVantageKey = 'VZLZ58FTEXZW7QZ6';
