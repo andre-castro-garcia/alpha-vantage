@@ -1,1 +1,1 @@
-export const alphaVantageKey = 'VZLZ58FTEXZW7QZ6';
+export const alphaVantageKey = '<API_KEY_ALPHA_VANTAGE>';
