@@ -1,30 +1,20 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { withProps, compose, lifecycle } from 'recompose';
+import { withProps, compose } from 'recompose';
 import numeral from 'numeral';
-
-import { searchIntradayInfo, resetIntradayInfo } from '../../store/reducers/searchIntradayReducer';
 import Intraday from '../intraday';
 
 const enhance = compose(
     connect(
-        ({ SearchQuoteReducer }) => ({ SearchQuoteReducer }),
-        {
-            searchIntradayInfoConnect: searchIntradayInfo,
-            resetIntradayInfoConnect: resetIntradayInfo
-        }
+        ({ SearchQuoteReducer }) => ({ SearchQuoteReducer })
     ),
     withProps(({ SearchQuoteReducer }) => ({
-        quote: SearchQuoteReducer.quote,
+        data: SearchQuoteReducer.data,
         isFetching: SearchQuoteReducer.isFetching,
         isSuccess: SearchQuoteReducer.isSuccess,
         isError: SearchQuoteReducer.isError
-    })),
-    lifecycle({
-        componentDidMount() { this.props.resetIntradayInfoConnect() },
-        componentDidUpdate() { this.props.resetIntradayInfoConnect() }
-    })
+    }))
 );
 
 const dailyVariation = (quote) => {
@@ -32,7 +22,7 @@ const dailyVariation = (quote) => {
     return change._value > 0;
 };
 
-export const Quote = enhance(({ quote, isFetching, isSuccess, isError, searchIntradayInfoConnect }) =>
+export const Quote = enhance(({ data, isFetching, isSuccess, isError }) =>
     <div>
         {
             isFetching &&
@@ -44,37 +34,34 @@ export const Quote = enhance(({ quote, isFetching, isSuccess, isError, searchInt
         }
         {
             isSuccess &&
-            <table>
+            <table style={{width:"100%"}}>
                 <tbody>
                 <tr>
                     <td>
-                        <h1>{quote["Global Quote"]["01. symbol"]}</h1>
+                        <h1>{data.quote["Global Quote"]["01. symbol"]}</h1>
                     </td>
                 </tr>
                 <tr>
-                    <td>open</td><td>{numeral(quote["Global Quote"]["02. open"]).format('$0,0.00')}</td>
+                    <td>open</td><td>{numeral(data.quote["Global Quote"]["02. open"]).format('$0,0.00')}</td>
                 </tr>
                 <tr>
-                    <td>previous close</td><td>{numeral(quote["Global Quote"]["08. previous close"]).format('$0,0.00')}</td>
+                    <td>previous close</td><td>{numeral(data.quote["Global Quote"]["08. previous close"]).format('$0,0.00')}</td>
                 </tr>
                 <tr>
-                    <td>high</td><td>{numeral(quote["Global Quote"]["03. high"]).format('$0,0.00')}</td>
+                    <td>high</td><td>{numeral(data.quote["Global Quote"]["03. high"]).format('$0,0.00')}</td>
                 </tr>
                 <tr>
-                    <td>low</td><td>{numeral(quote["Global Quote"]["04. low"]).format('$0,0.00')}</td>
+                    <td>low</td><td>{numeral(data.quote["Global Quote"]["04. low"]).format('$0,0.00')}</td>
                 </tr>
                 <tr>
-                    <td>price</td><td>{numeral(quote["Global Quote"]["05. price"]).format('$0,0.00')}</td>
+                    <td>price</td><td>{numeral(data.quote["Global Quote"]["05. price"]).format('$0,0.00')}</td>
                 </tr>
                 <tr>
-                    <td>last trading day</td><td>{new Date(quote["Global Quote"]["07. latest trading day"]).toUTCString()}</td>
+                    <td>last trading day</td><td>{new Date(data.quote["Global Quote"]["07. latest trading day"]).toUTCString()}</td>
                 </tr>
                 <tr>
                     <td colSpan={2}>
-                        <button onClick={() => searchIntradayInfoConnect(quote["Global Quote"]["01. symbol"])}>
-                            show intraday chart
-                        </button>
-                        <Intraday variation={dailyVariation(quote)} symbol={quote["Global Quote"]["01. symbol"]}/>
+                        <Intraday variation={dailyVariation(data.quote)} intraday={data.intraday}/>
                     </td>
                 </tr>
                 </tbody>

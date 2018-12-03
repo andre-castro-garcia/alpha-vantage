@@ -3,7 +3,7 @@ const initialState = {
     isFetched: false,
     isError: false,
     isSuccess: false,
-    quote: {}
+    data: {}
 };
 
 export const ACTION_TYPES = {
@@ -27,7 +27,7 @@ const SearchQuoteReducer = (state = initialState, { type, payload }) => {
         case ACTION_TYPES.SEARCH_QUOTE_SUCCESS:
             return {
                 ...state,
-                quote: payload.data,
+                data: { quote: payload.quote.data, intraday: payload.intraday.data },
                 isFetching: false,
                 isFetched: true,
                 isError: false,

@@ -1,5 +1,5 @@
 import { put, call, takeEvery, all } from 'redux-saga/effects';
-import { searchQuoteInfo } from '../../../services/searchSymbolService';
+import { searchQuoteInfo, searchIntradayInfo} from '../../../services/searchSymbolService';
 import { ACTION_TYPES } from '../../../store/reducers/searchQuoteReducer';
 
 const {
@@ -10,7 +10,10 @@ const {
 
 export function *searchQuote(payload) {
     try {
-        const response = yield call(searchQuoteInfo, payload);
+        let response = yield all({
+            quote: call(searchQuoteInfo, payload),
+            intraday: call(searchIntradayInfo, payload)
+        });
         yield put({ type: SEARCH_QUOTE_SUCCESS, payload: response });
     } catch (err) {
         yield put({ type: SEARCH_QUOTE_ERROR, payload: err })
