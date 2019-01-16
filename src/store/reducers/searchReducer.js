@@ -17,7 +17,7 @@ export const searchSymbolInfo = payload => ({
     searchTerm: payload
 });
 
-const SearchReducer = (state = initialState, { type, payload }) => {
+const searchReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case ACTION_TYPES.SEARCH_SYMBOL_REQUEST:
             return {
@@ -46,4 +46,4 @@ const SearchReducer = (state = initialState, { type, payload }) => {
     }
 };
 
-export default SearchReducer;
+export default searchReducer;

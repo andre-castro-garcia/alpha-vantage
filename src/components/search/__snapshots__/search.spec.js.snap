@@ -1,0 +1,361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render search component renders encountered symbols state 1`] = `
+<div>
+  <div>
+    <input
+      data-modal="input-search"
+      data-testid="input-search"
+      type="text"
+      value=""
+    />
+    <button
+      data-modal="input-search"
+      data-testid="button-search"
+      disabled=""
+    >
+      Search
+    </button>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              BRY
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Berry Petroleum Corporation
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              MPC
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Marathon Petroleum Corporation
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              PBR
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Petróleo Brasileiro S.A. - Petrobras
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              OXY
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Occidental Petroleum Corporation
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              OAS
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Oasis Petroleum Inc.
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              WLL
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Whiting Petroleum Corporation
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              UPL
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Ultra Petroleum Corp.
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              APC
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Anadarko Petroleum Corporation
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              LPI
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Laredo Petroleum Inc.
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              data-testid="button-symbol-load"
+            >
+              CPE
+            </button>
+          </td>
+          <td
+            data-testid="symbol-name"
+          >
+            Callon Petroleum Company
+          </td>
+          <td
+            data-testid="symbol-region"
+          >
+            United States
+          </td>
+          <td
+            data-testid="symbol-timezone"
+          >
+            UTC-05
+          </td>
+          <td
+            data-testid="symbol-currency"
+          >
+            USD
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`should render search component renders error state 1`] = `
+<div>
+  <div>
+    Ops! an error occured.
+  </div>
+</div>
+`;
+
+exports[`should render search component renders fetching state 1`] = `
+<div>
+  <div>
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`should render search component renders search and set a value 1`] = `
+<div>
+  <div>
+    <input
+      data-modal="input-search"
+      data-testid="input-search"
+      type="text"
+      value="PETR"
+    />
+    <button
+      data-modal="input-search"
+      data-testid="button-search"
+    >
+      Search
+    </button>
+    <table>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;
+
+exports[`should render search component renders symbol not found state 1`] = `
+<div>
+  <div>
+    Symbol not found.
+  </div>
+</div>
+`;

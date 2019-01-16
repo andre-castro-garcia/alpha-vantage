@@ -8,17 +8,17 @@ import _ from 'lodash';
 
 const enhance = compose(
     connect(
-        ({ SearchReducer }) => ({ SearchReducer }),
+        ({ searchReducer }) => ({ searchReducer }),
         {
             searchSymbolInfoConnect: searchSymbolInfo,
             searchQuoteInfoConnect: searchQuoteInfo
         }
     ),
-    withProps(({ SearchReducer }) => ({
-        data: SearchReducer.data,
-        isFetching: SearchReducer.isFetching,
-        isSuccess: SearchReducer.isSuccess,
-        isError: SearchReducer.isError
+    withProps(({ searchReducer }) => ({
+        data: searchReducer.data,
+        isFetching: searchReducer.isFetching,
+        isSuccess: searchReducer.isSuccess,
+        isError: searchReducer.isError
     })),
     withState("inputValue", "setInputValue", ""),
     withHandlers({
@@ -46,8 +46,8 @@ const enhance = compose(
 export const Search = enhance(({ inputValue, data, onChange, searchSymbolInfoConnect,
                                    searchQuoteInfoConnect }) =>
     <div>
-        <input onChange={onChange} type='text' value={inputValue}/>
-        <button disabled={inputValue.length < 1} onClick={() => searchSymbolInfoConnect(inputValue)}>
+        <input onChange={onChange} type='text' data-modal="input-search" value={inputValue} data-testid="input-search"/>
+        <button disabled={inputValue.length < 1} onClick={() => searchSymbolInfoConnect(inputValue)} data-modal="input-search" data-testid="button-search">
             Search
         </button>
         <table>
@@ -58,14 +58,14 @@ export const Search = enhance(({ inputValue, data, onChange, searchSymbolInfoCon
                     return (
                         <tr key={key}>
                             <td>
-                                <button onClick={() => searchQuoteInfoConnect(symbol["1. symbol"])}>
+                                <button onClick={() => searchQuoteInfoConnect(symbol["1. symbol"])} data-testid="button-symbol-load">
                                     {symbol["1. symbol"]}
                                 </button>
                             </td>
-                            <td>{symbol["2. name"]}</td>
-                            <td>{symbol["4. region"]}</td>
-                            <td>{symbol["7. timezone"]}</td>
-                            <td>{symbol["8. currency"]}</td>
+                            <td data-testid="symbol-name">{symbol["2. name"]}</td>
+                            <td data-testid="symbol-region">{symbol["4. region"]}</td>
+                            <td data-testid="symbol-timezone">{symbol["7. timezone"]}</td>
+                            <td data-testid="symbol-currency">{symbol["8. currency"]}</td>
                         </tr>
                     )})
             }
