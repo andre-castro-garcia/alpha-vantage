@@ -1,3 +1,3 @@
-## Alpha Vantage
+## Alpha Vantage UI
 
-Projeto de teste React+Redux+Saga de consulta a API Financeira Alpha Vantage
+This project it is a React+Redux UI sample to Alpha Vantage API. 
